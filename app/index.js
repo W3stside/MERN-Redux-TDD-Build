@@ -1,8 +1,14 @@
+//REACT
 import React from 'react';
 import { render } from 'react-dom';
+//REACT HOT LOADER CONTAINER
 import { AppContainer } from 'react-hot-loader';
+//REDUX
 import { configureStore, history } from './store/configureStore';
+//CONTAINERS
 import Root from './containers/Root';
+//STYLING - adds default styling to index.html availble throughout app - please refer to ./styles/default.
+// import './styles/default';
 
 const store = configureStore();
 

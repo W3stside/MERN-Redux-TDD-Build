@@ -2,11 +2,15 @@ import React from 'react';
 
 const TestComponent = () =>
     <div>
-        <h1>Hello! Here is my custom implementation of a MERN app. Hope you like the build.</h1>
+        <div>Hello! Here is my custom implementation of a MERN app. Hope you like the build.</div>
         <div>
-            <span>Thanks to the original Redux-React-Webpack build found @</span><a src="https://github.com/jpsierens/webpack-react-redux">here</a>
+            Thanks to the original Redux-React-Webpack build found
+            <a
+                onClick={() => {window.location.assign('https://github.com/jpsierens/webpack-react-redux');}}
+                style={{color: 'teal', cursor: 'pointer'}}
+                > HERE!</a>
         </div>
-        <h1>I built this while listening to the MGS2: SOL soundtrack and felt super sneaky.</h1>
+        <h1 style={{backgroundColor: 'yellow', color: 'black'}}>#HEJA BVB! :)</h1>
     </div>;
 
 export default TestComponent;
