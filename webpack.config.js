@@ -8,6 +8,9 @@ module.exports = {
     devtool: 'eval-source-map',
     entry: [
         'babel-polyfill',
+        // connects to server to receive notifs when bundle rebuilds
+        // and updates your client bundle accordingly
+        'webpack-hot-middleware/client',
         'webpack/hot/only-dev-server',
         'react-hot-loader/patch',
         path.join(__dirname, 'app/index.js')

@@ -3,14 +3,14 @@ require('dotenv').config();
 // connect db (before app)
 require('./app/models/connection');
 
-//create app
+// create app
 const express   = require('express');
 const app       = express();
-const PORT      = process.env.PORT;
+const PORT      = process.env.PORT || 3000;
 //Webpack
 const webpack   = require('webpack');
 
-//DEVELOPMENT
+// DEVELOPMENT
 if (process.env.NODE_ENV !== 'production') {
     const webpackDevMiddleware  = require('webpack-dev-middleware');
     const webpackHotMiddleware  = require('webpack-hot-middleware');
@@ -25,25 +25,25 @@ if (process.env.NODE_ENV !== 'production') {
         }
     }));
     app.use(webpackHotMiddleware(compiler));
-
+// PRODUCTION
 } else {
     // Plug in Static Routes here
 };
 
-//Middleware
+// Middleware
 const bodyParser = require('body-parser');
 
-//Routes
-const apiRoutes  = require('./app/backendRoutes/apiRoutes');
+// Routes
+// EXAMPLE: const apiRoutes  = require('./app/backendRoutes/apiRoutes');
 
-//Express Middleware
+// Express Middleware
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
     extended: false
 }));
 
-//Routing
-app.use('/api', apiRoutes);
+// Routing
+// EXAMPLE: app.use('/api', apiRoutes);
 
 app.listen(PORT, 'localhost', function(err) {
     if (err) {

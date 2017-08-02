@@ -5,7 +5,7 @@ let dbURI;
 
 // DEVELOPMENT DBURI
 if(process.env.NODE_ENV !== 'production') {
-    dbURI = process.env.TEST_MONGODB_URI;
+    dbURI = process.env.TEST_MONGODB_URI || 'mongodb://localhost:27017';
 // PRODUCTION DBURI
 } else {
     dbURI = process.env.PROD_MONGODB_URI;
