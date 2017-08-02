@@ -11,7 +11,7 @@ Contains:
 * a webpack production config so you can build the app and make it ready for production
 * Sass support, just import your styles wherever you need them
 * Default styling available in ./styles/default.js
-    * allows className="cssClassNameHere justLike normalCSS" - no {} curly braces necessary.
+    * allows <code>className="cssClassNameHere justLike normalCSS"</code> - no {} curly braces necessary.
     * added a flex implementation via flexP12 flexP6 etc - refer to default.js for more details
     * disabled by default - remove entirely if needed - sets inline styles at top of index file - only caveat
 * eslint to keep your js readable
