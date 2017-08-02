@@ -119,18 +119,18 @@
       { "SwitchCase": 1 }
     ],                              // http://eslint.org/docs/rules/indent
     "brace-style": [
-      2,                          
+      2,
       "1tbs", {
         "allowSingleLine": true
       }
     ],                               // http://eslint.org/docs/rules/brace-style
     "quotes": [
-      2, "single", "avoid-escape"    // http://eslint.org/docs/rules/quotes
+      1, "single", "avoid-escape"    // http://eslint.org/docs/rules/quotes
     ],
-    "camelcase": [2, {               // http://eslint.org/docs/rules/camelcase
+    "camelcase": [1, {               // http://eslint.org/docs/rules/camelcase
       "properties": "never"
     }],
-    "comma-spacing": [2, {           // http://eslint.org/docs/rules/comma-spacing
+    "comma-spacing": [1, {           // http://eslint.org/docs/rules/comma-spacing
       "before": false,
       "after": true
     }],
@@ -147,7 +147,7 @@
     "no-multiple-empty-lines": [2, { // http://eslint.org/docs/rules/no-multiple-empty-lines
       "max": 2
     }],
-    "no-nested-ternary": 2,          // http://eslint.org/docs/rules/no-nested-ternary
+    "no-nested-ternary": 1,          // http://eslint.org/docs/rules/no-nested-ternary
     "no-new-object": 2,              // http://eslint.org/docs/rules/no-new-object
     "no-spaced-func": 2,             // http://eslint.org/docs/rules/no-spaced-func
     "no-trailing-spaces": 2,         // http://eslint.org/docs/rules/no-trailing-spaces
@@ -180,7 +180,7 @@
     "react/no-did-update-set-state": 2,
     "react/no-multi-comp": 2,
     "react/no-unknown-property": 2,
-    "react/prop-types": 2,
+    "react/prop-types": 1,
     "react/react-in-jsx-scope": 2,
     "react/self-closing-comp": 2,
     "react/sort-comp": 2,
