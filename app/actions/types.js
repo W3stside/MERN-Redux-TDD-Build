@@ -1,1 +1,1 @@
-export const FILTER = 'FILTER';
+// EXAMPLE: export const FILTER = 'FILTER';
