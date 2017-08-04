@@ -4,7 +4,9 @@ import createHistory from 'history/createBrowserHistory';
 import { applyMiddleware, createStore, compose } from 'redux';
 import { routerMiddleware } from 'react-router-redux';
 import thunk from 'redux-thunk';
-// REDUCERS
+// REDUX-PERSIST
+import { autoRehydrate } from 'redux-persist';
+// REDUCER
 import rootReducer from '../reducers';
 // DEV TOOLS CONTAINER COMPONENT
 import DevTools from '../containers/DevTools';
@@ -18,6 +20,7 @@ export function configureStore(initialState) {
         initialState,
         compose(
             middleware,
+            autoRehydrate(),
             DevTools.instrument()
         )
     );

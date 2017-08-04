@@ -5,12 +5,19 @@ import { render } from 'react-dom';
 import { AppContainer } from 'react-hot-loader';
 // REDUX
 import { configureStore, history } from './store/configureStore';
+// REDUX-PERSIST
+import { persistStore } from 'redux-persist';
 // CONTAINERS
 import Root from './containers/Root';
 // STYLING - adds default styling to index.html availble throughout app - please refer to ./styles/default.
 // import './styles/default';
 
+// Call Configured Store
 const store = configureStore();
+// Persist the Store
+persistStore(store, /* {whitelist: ['users']}, */ () => {
+    console.log('Rehydration complete');
+});
 
 render(
     <AppContainer>
@@ -25,6 +32,10 @@ if (module.hot) {
         const newStore = newConfigureStore.configureStore();
         const newHistory = newConfigureStore.history;
         const NewRoot = require('./containers/Root').default;
+        // Persist the Store
+        persistStore(newStore, /* {whitelist: ['users']}, */ () => {
+            console.log('Rehydration complete');
+        });
         render(
             <AppContainer>
                 <NewRoot store={newStore} history={newHistory} />

@@ -1,10 +1,12 @@
 // REACT ROUTER
 import createHistory from 'history/createBrowserHistory';
 // REDUX
-import { applyMiddleware, createStore } from 'redux';
+import { applyMiddleware, createStore, compose } from 'redux';
 import { routerMiddleware } from 'react-router-redux';
 import thunk from 'redux-thunk';
-// REDUCERS
+// REDUX-PERSIST
+import { autoRehydrate } from 'redux-persist';
+// REDUCER
 import rootReducer from '../reducers';
 
 export const history = createHistory();
@@ -14,6 +16,9 @@ export function configureStore(initialState) {
     return createStore(
         rootReducer,
         initialState,
-        middleware,
+        compose(
+            middleware,
+            autoRehydrate(),
+        )
     );
 }
