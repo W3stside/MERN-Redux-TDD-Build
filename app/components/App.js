@@ -4,7 +4,7 @@ import Routes from '../routes';
 
 const App = () =>
     <div>
-        <h1>Hello!</h1>
+        <h1>Hello friend!</h1>
         { Routes }
     </div>;
 

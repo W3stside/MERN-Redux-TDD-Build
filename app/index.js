@@ -1,3 +1,4 @@
+/* eslint no-console: 0 */
 // REACT
 import React from 'react';
 import { render } from 'react-dom';

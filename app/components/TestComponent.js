@@ -1,4 +1,6 @@
 import React from 'react';
+// ROUTER
+import { Link } from 'react-router-dom'
 
 const TestComponent = () =>
     <div>
@@ -11,6 +13,8 @@ const TestComponent = () =>
                 > HERE!</a>
         </div>
         <h1 style={{backgroundColor: 'yellow', color: 'black'}}>#HEJA BVB! :)</h1>
+        <Link to="about" > About </Link>
+        <Link to="contact" > Contact </Link>
     </div>;
 
 export default TestComponent;
