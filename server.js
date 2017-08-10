@@ -1,7 +1,7 @@
 // import .env vars
 require('dotenv').config();
 // connect db (before app)
-require('./app/models/connection');
+// require('./app/models/connection');
 
 // create app
 const express   = require('express');
