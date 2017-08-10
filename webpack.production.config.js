@@ -1,12 +1,13 @@
 'use strict';
 
-var path = require('path');
-var webpack = require('webpack');
-var HtmlWebpackPlugin = require('html-webpack-plugin');
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
-var StatsPlugin = require('stats-webpack-plugin');
+const path = require('path');
+const webpack = require('webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const StatsPlugin = require('stats-webpack-plugin');
 
 module.exports = {
+    devtool: 'source-map', //cheap eval does NOT work in prod
     // The entry file. All your app roots from here.
     entry: [
         // Polyfills go here too, like babel-polyfill or whatwg-fetch
@@ -15,9 +16,9 @@ module.exports = {
     ],
     // Where you want the output to go
     output: {
-        path: path.join(__dirname, '/dist/'),
-        filename: '[name]-[hash].min.js',
-        publicPath: '/'
+        path: path.join(__dirname, '/static/'),
+        filename: 'bundle.js',
+        publicPath: '/assets/'
     },
     plugins: [
         // webpack gives your modules and chunks ids to identify them. Webpack can vary the
@@ -25,14 +26,6 @@ module.exports = {
         // this plugin
         new webpack.optimize.OccurenceOrderPlugin(),
 
-        // handles creating an index.html file and injecting assets. necessary because assets
-        // change name because the hash part changes. We want hash name changes to bust cache
-        // on client browsers.
-        new HtmlWebpackPlugin({
-            template: 'app/index.tpl.html',
-            inject: 'body',
-            filename: 'index.html'
-        }),
         // extracts the css from the js files and puts them on a separate .css file. this is for
         // performance and is used in prod environments. Styles load faster on their own .css
         // file as they dont have to wait for the JS to load.
@@ -87,10 +80,19 @@ module.exports = {
             // we extract the styles into their own .css file instead of having
             // them inside the js.
             loader: ExtractTextPlugin.extract('style', 'css?modules&localIdentName=[name]---[local]---[hash:base64:5]!sass')
-        }, {
+        },
+        // allows loading in local files via require() in front end
+        {
+            test: /\.(png|jpg|gif)$/,
+            use: [
+                {loader: 'url-loader?limit=8192'}
+            ]
+        },
+        {
             test: /\.woff(2)?(\?[a-z0-9#=&.]+)?$/,
             loader: 'url?limit=10000&mimetype=application/font-woff'
-        }, {
+        },
+        {
             test: /\.(ttf|eot|svg)(\?[a-z0-9#=&.]+)?$/,
             loader: 'file'
         }]

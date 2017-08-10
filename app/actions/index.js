@@ -8,3 +8,13 @@ export function filterTable(filter) {
     };
 }
 */
+
+export const handleTextInput = input => field => {
+    return {
+        type: types.TEXT_INPUT,
+        payload: {
+            input,
+            field
+        }
+    };
+};

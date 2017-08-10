@@ -9,6 +9,8 @@ const app       = express();
 const PORT      = process.env.PORT || 3000;
 //Webpack
 const webpack   = require('webpack');
+//path
+const path      = require('path');
 
 // DEVELOPMENT
 if (process.env.NODE_ENV !== 'production') {
@@ -28,6 +30,7 @@ if (process.env.NODE_ENV !== 'production') {
 // PRODUCTION
 } else {
     // Plug in Static Routes here
+    app.use('/', express.static(path.resolve(__dirname, 'static')));
 };
 
 // Middleware
@@ -42,13 +45,18 @@ app.use(bodyParser.urlencoded({
     extended: false
 }));
 
-// Routing
+// Routes
 // EXAMPLE: app.use('/api', apiRoutes);
+
+//Main Input
+app.get('/*',(req, res) => {
+    res.sendFile(path.resolve(__dirname, 'index.html'));
+})
 
 app.listen(PORT, 'localhost', function(err) {
     if (err) {
         console.log(err);
+    } else {
+        console.log(`Listening at localhost:${PORT} ... have fun!`);
     }
-
-    console.log(`Listening at localhost:${PORT}`);
 });

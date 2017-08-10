@@ -16,7 +16,7 @@ import * as userActions from '../../../app/actions/userActions';
 import * as posterActions from '../../../app/actions/posterActions';
 
 // Base API URL
-const apiURL = 'https://mcc17.herokuapp.com';
+const apiURL = '/api/some/URL';
 
 // Axios by default changes http server to xmlhttp so use this to set defaults for axios
 axios.defaults.host = apiURL;
@@ -60,22 +60,24 @@ describe('async actions', () => {
             ];
             // Create a mock Redux Store to test
             const store = mockStore({
+                // USER DATA
                 userData: {
-                    title: '-',
                     name: '',
-                    email: ''
+                    id: '',
+                    email: '',
+                    password: '',
                 },
-                // AUTH STATUS
-                registering: false,
-                registered: false,
-                loggingIn: false,
+                // ASYNC action states
+                aSyncWorking: false,
+                aSyncFinished: false,
+                // USER AUTH states
                 loggedIn: false,
-                // FETCH STATUS
-                fetching: false,
+                registered: false,
                 fetched: false,
-                err: null,
                 // DATA
-                users: []
+                users: [],
+                // ERRORS
+                errors: null
             });
             return store.dispatch(userActions.fetchUsers()).then(() => {
                 // return of async actions
@@ -100,22 +102,24 @@ describe('async actions', () => {
             ];
             // Create a mock Redux Store to test
             const store = mockStore({
+                // USER DATA
                 userData: {
-                    title: '-',
                     name: '',
-                    email: ''
+                    id: '',
+                    email: '',
+                    password: '',
                 },
-                // AUTH STATUS
-                registering: false,
-                registered: false,
-                loggingIn: false,
+                // ASYNC action states
+                aSyncWorking: false,
+                aSyncFinished: false,
+                // USER AUTH states
                 loggedIn: false,
-                // FETCH STATUS
-                fetching: false,
+                registered: false,
                 fetched: false,
-                err: null,
                 // DATA
-                users: []
+                users: [],
+                // ERRORS
+                errors: null
             });
             return store.dispatch(userActions.addUser(userData)).then(() => {
                 // return of async actions

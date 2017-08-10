@@ -1,18 +1,37 @@
+import * as types from '../actions/types';
+
 const initialState = {
+    // USER DATA
     userData: {
-        name: 'Steve Irwin',
-        id: '1234',
-        email: 'steve@crikey.com'
+        name: '',
+        id: '',
+        email: '',
+        password: '',
     },
-    loggedIn: true
+    // ASYNC action states
+    aSyncWorking: false,
+    aSyncFinished: false,
+    // USER AUTH states
+    loggedIn: false,
+    registered: false,
+    fetched: false,
+    // DATA
+    users: [],
+    // ERRORS
+    errors: null
 };
 
 const usersReducer = (state = initialState, action) => {
     switch(action.type) {
-        case 'SOMETHING':
+        case types.TEXT_INPUT:
             return {
-                ...state
+                ...state,
+                userData: {
+                    ...state.userData,
+                    [action.payload.field]: action.payload.input
+                },
             };
+
         default:
             return state;
     }

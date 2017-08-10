@@ -1,8 +1,8 @@
 'use strict';
 
-var path = require('path');
-var webpack = require('webpack');
-var HtmlWebpackPlugin = require('html-webpack-plugin');
+const path = require('path');
+const webpack = require('webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
     devtool: 'eval-source-map',
@@ -16,16 +16,12 @@ module.exports = {
         path.join(__dirname, 'app/index.js')
     ],
     output: {
-        path: path.join(__dirname, '/dist/'),
-        filename: '[name].js',
+        // path: path.join(__dirname, '/static/'),
+        path: '/',
+        filename: 'bundle.js',
         publicPath: '/'
     },
     plugins: [
-        new HtmlWebpackPlugin({
-            template: 'app/index.tpl.html',
-            inject: 'body',
-            filename: 'index.html'
-        }),
         new webpack.optimize.OccurenceOrderPlugin(),
         new webpack.HotModuleReplacementPlugin(),
         new webpack.NoErrorsPlugin(),
