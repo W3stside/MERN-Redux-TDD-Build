@@ -41,3 +41,6 @@ ngrok
 
 #build files
 static
+
+#misc
+yarn_lock.txt
