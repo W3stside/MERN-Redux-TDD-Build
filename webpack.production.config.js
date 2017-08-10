@@ -16,7 +16,7 @@ module.exports = {
     ],
     // Where you want the output to go
     output: {
-        path: path.join(__dirname, '/static/'),
+        path: path.join(__dirname, 'static'),
         filename: 'bundle.js',
         publicPath: '/assets/'
     },

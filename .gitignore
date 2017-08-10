@@ -38,3 +38,6 @@ ngrok
 
 #environment files
 .env
+
+#build files
+static

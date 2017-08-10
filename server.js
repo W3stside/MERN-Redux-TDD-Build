@@ -50,7 +50,7 @@ app.use(bodyParser.urlencoded({
 
 //Main Input
 app.get('/*',(req, res) => {
-    res.sendFile(path.resolve(__dirname, 'index.html'));
+    res.sendFile(path.resolve(__dirname, 'app/index.html'));
 })
 
 app.listen(PORT, 'localhost', function(err) {
