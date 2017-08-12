@@ -1,3 +1,4 @@
+/* eslint no-console: 0 */
 import React from 'react';
 // REDUX
 import { connect } from 'react-redux';
@@ -14,15 +15,28 @@ const App = () =>
         { Routes }
     </div>;
 
+/**
+ * Passes Users State to App for computing User login status
+ * @param  {object} state Users State
+ * @return {object}       maps Users State to props
+ */
 const mapStateToProps = (state) => {
     return {
         users: state.users
     };
 };
 
+/**
+ * Using Recompose + Redux - map state to Props and wrap in a HoC with lifecycle hooks
+ * @type {HoC} HoC Provides componentDidMount() lifecycle hook which calls getStoredState from LocalStorage
+ */
 export default compose(
     connect(mapStateToProps),
     lifecycle({
+        /**
+         * componentDidMount() lifecycle Hook
+         * @return {object} returns localStorage User state (loggedIn // registered)
+         */
         componentDidMount() {
             // const {users, dispatch} = this.props;
             getStoredState( {}, (err, state) => {
