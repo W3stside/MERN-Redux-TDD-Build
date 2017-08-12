@@ -1,3 +1,4 @@
+/* eslint no-console: 0 */
 const mongoose = require('mongoose');
 
 // cache URI
@@ -23,6 +24,6 @@ mongoose.connect(dbURI)
     });
 
 // shut down
-mongoose.connection.on('disconnected', function() {
+mongoose.connection.on('disconnected', () => {
     console.log('Mongoose successfully shut down.');
 });

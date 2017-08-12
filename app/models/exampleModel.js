@@ -1,6 +1,10 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
+/**
+ * An example MongoDB w/Mongoose ORM Schema
+ * @type {Schema}
+ */
 const exampleSchema = new Schema({
     name: String,
     binary: Buffer,
@@ -35,5 +39,5 @@ const exampleSchema = new Schema({
     }
 });
 
-//Creates model - 'Example' here will be created as all lower case 'examples' with an S in db
+// Creates model - 'Example' here will be created as all lower case 'examples' with an S in db
 module.exports = mongoose.model('Example', exampleSchema);
