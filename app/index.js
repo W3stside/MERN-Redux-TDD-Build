@@ -15,7 +15,15 @@ import Root from './containers/Root';
 
 // Call Configured Store
 const store = configureStore();
-// Persist the Store
+
+/** persistStore()
+ * Configures what part of State to persist to localStorage
+ * @param  {object} store   State
+ * @param  {object} config  configures what to persist or not to persist
+ * WHITELIST: what slice of state to persist to localStorage
+ * >> add by reducer // state KEY
+ * @return {object}         slice of STATE object to persist to localStorage
+ */
 persistStore(store, /* {whitelist: ['users']}, */ () => {
     console.log('Rehydration complete');
 });
