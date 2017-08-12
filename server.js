@@ -49,11 +49,11 @@ app.use(bodyParser.urlencoded({
 // EXAMPLE: app.use('/api', apiRoutes);
 
 //Main Input
-app.get('/*',(req, res) => {
+app.get('/*', (req, res) => {
     res.sendFile(path.resolve(__dirname, 'app/index.html'));
 })
 
-app.listen(PORT, function(err) {
+app.listen(PORT, err => {
     if (err) {
         console.log(err);
     } else {
