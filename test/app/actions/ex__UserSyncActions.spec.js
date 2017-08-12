@@ -16,7 +16,7 @@ describe('actions', () => {
      * @type {function}
      * @param {string} string Specific description of unit test
      * @param {function} function Fires actual test
-     */
+    */
     it('TEXT_INPUT action should add Input', () => {
         const input = 'poop';
         const field = 'NAME';
