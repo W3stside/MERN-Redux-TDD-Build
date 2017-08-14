@@ -53,7 +53,11 @@ This will fire tests from ./test and configure using test-config.js file
 
 > TDD uses `chai`, `mocha`, `enzyme`, `sinon`, `redux-mockstore`, and `nock`.
 
-``FRONTEND REDUX``
+```
+/////////////////////////////
+/////// FRONTEND REDUX
+////////////////////////////
+```
 
 ### ACTIONS - sync & async
 > sync actionCreator for text input using curried 'thunk' format
@@ -114,16 +118,13 @@ export const aSync = method => (url, data) => dispatch => {
 ### CONSTANTS
 > Used to replace string based action types to prevent accidents - creates a structured less error prone approach
 ```javascript
-// /////////////
-// /// SYNC
-// ////////////
+
+// SYNCHRONOUS
 
 // Users
 export const USERS_TEXT_INPUT      = 'USERS_TEXT_INPUT'
 
-// //////////////
-// /// ASYNC
-// /////////////
+// ASYNCHRONOUS
 
 // Users
 export const USERS_ASYNC_WORKING  = 'USERS_ASYNC_WORKING'
@@ -186,7 +187,11 @@ const usersReducer = (state = initialState, action) => {
 export default usersReducer;
 ```
 
-``TESTING``
+```
+  ///////////////////////////
+ ///////// TESTING /////////
+///////////////////////////
+```
 
 #### COMPONENTS
 ```javascript
@@ -295,9 +300,6 @@ describe('async actions', () => {
         // GET users
         it('fires USERS_ASYNC_WORKING then USERS_ASYNC_DONE when SUCCESS', () => {
 
-            //Curried actionCreator
-            const userASyncGET = aSync('GET');
-
             //Nock mock api call
             nock(apiURL)
                 .get('/posts/1')
@@ -338,7 +340,10 @@ describe('async actions', () => {
                 // ERRORS
                 errors: null
             });
-
+            
+            //Curried actionCreator
+            const userASyncGET = aSync('GET');
+            
             //Start Test - fire curried userSyncGET action
             return store.dispatch(
             userASyncGET(`https://jsonplaceholder.typicode.com/${endpoint}/${param}`))
@@ -353,9 +358,6 @@ describe('async actions', () => {
 
             //Cache mock data to POST  
             const data = {userID: 20, id: 40, title: 'Hello', body: 'World'};
-
-            //Curried POST actionCreator
-            const userASyncPOST = aSync('POST');
 
             //nock mock api call
             nock(apiURL)
@@ -400,7 +402,10 @@ describe('async actions', () => {
                 // ERRORS
                 errors: null
             });
-
+            
+            //Curried POST actionCreator
+            const userASyncPOST = aSync('POST');
+            
             //Start test - dispatch curried actionCreator fn
             return store.dispatch(
             userASyncPOST('https://jsonplaceholder.typicode.com/posts', data))
