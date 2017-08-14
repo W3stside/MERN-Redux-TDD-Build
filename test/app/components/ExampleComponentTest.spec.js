@@ -2,23 +2,20 @@ import React from 'react';
 import {expect} from 'chai';
 import {shallow} from 'enzyme';
 
-/** EXAMPLE React Component Testing w/Enzyme
-********************************************
+import TestComponent from '../../../app/components/TestComponent';
 
-import DropdownSelect from '../../../app/components/DropdownSelect';
-
-describe('<DropdownSelect />', () => {
-    const wrapper = shallow(<DropdownSelect />);
-    it('it should find a select tag', () => {
-        expect(wrapper.find('select')).to.have.length(0);
+describe('<TestComponent />', () => {
+    const wrapper = shallow(<TestComponent />);
+    it('it should find 3 div tags', () => {
+        expect(wrapper.find('div')).to.have.length(3);
     });
-    it('should find 4 dynamically rendered option tags', () => {
-        expect(wrapper.find('option')).to.have.length(0);
+    it('should find 1 a tag', () => {
+        expect(wrapper.find('a')).to.have.length(1);
     });
-    it('should find 0 divs', () => {
-        expect(wrapper.find('div')).to.have.length(0);
+    it('should find 1 h1 tag', () => {
+        expect(wrapper.find('h1')).to.have.length(1);
+    });
+    it('should find 2 Link tags', () => {
+        expect(wrapper.find('Link')).to.have.length(2);
     });
 });
-
-*********************************************
-*/

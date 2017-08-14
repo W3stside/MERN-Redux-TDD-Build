@@ -17,8 +17,8 @@ const App = () =>
 
 /**
  * Passes Users State to App for computing User login status
- * @param  {object} state Users State
- * @return {object}       maps Users State to props
+ * @param  {object} state store.getState()
+ * @return {object}       maps chosen state to props
  */
 const mapStateToProps = (state) => {
     return {
