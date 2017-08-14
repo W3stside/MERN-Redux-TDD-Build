@@ -3,7 +3,7 @@ A full boilerplate for playing around with react, redux and react-router with th
 
 Contains:
 
-* simple functional component layout - Recompos for HoC layouts.
+* simple functional component layout - Recompose for HoC layouts.
 * ES6 - 7 Support with Babel
 * Redux dev tools to help you keep track of the app's state
 * Routing
@@ -190,7 +190,13 @@ export default usersReducer;
 > Let's turn now to unit testing in react and redux
 # TESTING - REDUX + REACT COMPONENTS
 
-#### COMPONENTS
+```
+///////////////////////////////////////////
+//////////// REACT TESTS
+///////////////////////////////////////////
+```
+
+#### SIMPLE COMPONENTS
 ```javascript
 import React from 'react';
 import {expect} from 'chai';
@@ -213,6 +219,75 @@ describe('<TestComponent />', () => {
         expect(wrapper.find('Link')).to.have.length(2);
     });
 });
+```
+### SMART COMPONENTS
+```javascript
+import React from 'react';
+import { expect } from 'chai';
+import { mount } from 'enzyme';
+import sinon from 'sinon';
+import { SmartFormContainer } from '../../../app/containers/SmartFormContainer';
+
+function setup() {
+    const props = {
+         buttonName: 'Submit',
+         name: 'Test',
+         data: ['Dortmund', 'Bremen', 'Munchen'],
+         placeholder: 'input field',
+        // ACTIONS
+        dispatchSomeAction: sinon.spy(),
+        }
+    };
+
+    const enzymeWrapper = mount(<SmartFormContainer {...props} />);
+
+    return {
+        props,
+        enzymeWrapper
+    };
+}
+
+describe('<SmartFormContainer /> and SubComponents', () => {
+    it('should render itself and sub components', () => {
+        const {enzymeWrapper} = setup();
+        // Regular html elems
+        expect(enzymeWrapper.find('div')).to.have.length(2);
+        expect(enzymeWrapper.find('form')).to.have.length(1);
+
+        // Testing props and Sub components
+        // Header
+        const HeaderProps = enzymeWrapper.find('Header').props();
+        expect(HeaderProps.name).to.equal('Test');
+
+        // DropdownSelect
+        const DropdownProps = enzymeWrapper.find('DropdownSelect').props();
+        expect(DropdownProps.data).to.eql(['Dortmund', 'Bremen', 'Munchen']);
+     
+        // InputField
+        const InputProps = enzymeWrapper.find('InputField').first().props();
+        expect(InputProps.placeholder).to.eql('Full name');
+
+        // SubmitButton
+        const ButtonProps = enzymeWrapper.find('SubmitButton').props();
+        expect(ButtonProps.buttonName).to.eql('Submit');
+    });
+
+    // ACTION CREATOR DISPATCH Tests
+    // Form onSubmit
+    it('should dispatch "dispatchSomeAction" action Creator', () => {
+        const { enzymeWrapper, props} = setup();
+        const Form = enzymeWrapper.find('form');
+        // Fire onSubmit prop from Button click
+        Form.props().onSubmit();
+        expect(props.dispatchSomeAction.callCount).to.equal(1);
+    });
+});
+```
+
+```
+///////////////////////////////////////////
+//////////// REDUX TESTS
+///////////////////////////////////////////
 ```
 
 #### SYNC Actions
