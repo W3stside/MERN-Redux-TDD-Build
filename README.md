@@ -53,11 +53,10 @@ This will fire tests from ./test and configure using test-config.js file
 
 > TDD uses `chai`, `mocha`, `enzyme`, `sinon`, `redux-mockstore`, and `nock`.
 
-```
-/////////////////////////////
-/////// FRONTEND REDUX
-////////////////////////////
-```
+<hr/>
+
+> Here we'll look at frontend Redux architecture first
+# FRONTEND - REDUX
 
 ### ACTIONS - sync & async
 > sync actionCreator for text input using curried 'thunk' format
@@ -186,12 +185,10 @@ const usersReducer = (state = initialState, action) => {
 
 export default usersReducer;
 ```
+<hr/>
 
-```
-  ///////////////////////////
- ///////// TESTING /////////
-///////////////////////////
-```
+> Let's turn now to unit testing in react and redux
+# TESTING - REDUX + REACT COMPONENTS
 
 #### COMPONENTS
 ```javascript
